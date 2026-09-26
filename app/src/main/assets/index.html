@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="tr">
+
+<head>
+    <meta charset="utf-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=5, user-scalable=yes">
+
+    <title>Kasa Yönetimi</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>💰 KASA YÖNETİMİ</h1>
+    <p>Günlük Kupon & Kasa Takibi</p>
+</header>
+
+
+<main>
+
+    <!-- =========================
+         KASA BİLGİLERİ
+         ========================= -->
+
+    <section class="bank-section">
+
+        <div class="bank-card">
+
+            <span>Başlangıç Kasa</span>
+
+            <div class="bank-value-row">
+
+                <strong id="startBank">
+                    20.000,00 TL
+                </strong>
+
+                <button
+                    type="button"
+                    id="changeStartBank"
+                    class="edit-bank">
+
+                    ✏️
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="bank-card current">
+
+            <span>Güncel Kasa</span>
+
+            <strong id="currentBank">
+                20.000,00 TL
+            </strong>
+
+            <small id="totalPL">
+                Toplam K/Z: 0,00 TL
+            </small>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         ÖZET
+         ========================= -->
+
+    <section class="stats">
+
+        <div class="stat-card">
+
+            <span>Kazandı</span>
+
+            <b id="winDays">
+                0
+            </b>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span>Fire</span>
+
+            <b id="lossDays">
+                0
+            </b>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span>Beklemede</span>
+
+            <b id="pendingDays">
+                0
+            </b>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         YENİ KUPON
+         ========================= -->
+
+    <section class="panel">
+
+        <h2>➕ Yeni Kupon</h2>
+
+
+        <div class="form-grid">
+
+            <label>
+
+                Risk %
+
+                <input
+                    id="risk"
+                    type="number"
+                    min="0.01"
+                    max="100"
+                    step="0.01"
+                    value="20">
+
+            </label>
+
+
+            <label>
+
+                Oran
+
+                <input
+                    id="odds"
+                    type="number"
+                    min="1.01"
+                    step="0.01"
+                    placeholder="Örn. 1.60">
+
+            </label>
+
+        </div>
+
+
+        <div class="stake-box">
+
+            <span>Oynanacak Tutar</span>
+
+            <strong id="stake">
+                4.000,00 TL
+            </strong>
+
+        </div>
+
+
+        <div class="result-title">
+            Sonuç
+        </div>
+
+
+        <div class="result-buttons">
+
+            <button
+                type="button"
+                class="result-button win"
+                data-result="KAZANDI">
+
+                ✅ KAZANDI
+
+            </button>
+
+
+            <button
+                type="button"
+                class="result-button fire"
+                data-result="FİRE">
+
+                ❌ FİRE
+
+            </button>
+
+
+            <button
+                type="button"
+                class="result-button pending active"
+                data-result="BEKLEMEDE">
+
+                ⏳ BEKLEMEDE
+
+            </button>
+
+        </div>
+
+
+        <div
+            id="preview"
+            class="preview">
+
+            Kupon bilgilerini girince hesaplama burada görünecek.
+
+        </div>
+
+
+        <button
+            type="button"
+            id="save"
+            class="save-button">
+
+            KUPONU KAYDET
+
+        </button>
+
+    </section>
+
+
+    <!-- =========================
+         GÜNLÜK KAYITLAR
+         ========================= -->
+
+    <section class="panel records-panel">
+
+        <div class="panel-header">
+
+            <div>
+
+                <h2>📊 Kasa Hareketleri</h2>
+
+                <small>
+                    🔍 İki parmakla yakınlaştırabilirsin
+                </small>
+
+            </div>
+
+
+            <button
+                type="button"
+                id="reset"
+                class="reset-button">
+
+                Tümünü Sil
+
+            </button>
+
+        </div>
+
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Gün</th>
+
+                        <th>
+                            Baş.<br>Kasa
+                        </th>
+
+                        <th>
+                            Risk
+                        </th>
+
+                        <th>
+                            Tutar
+                        </th>
+
+                        <th>
+                            Oran
+                        </th>
+
+                        <th>
+                            Sonuç
+                        </th>
+
+                        <th>
+                            K/Z
+                        </th>
+
+                        <th>
+                            Son<br>Kasa
+                        </th>
+
+                        <th>
+                            İşlem
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="history">
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <div
+            id="empty"
+            class="empty">
+
+            Henüz kayıt bulunmuyor.
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<script src="app.js"></script>
+
+</body>
+
+</html>

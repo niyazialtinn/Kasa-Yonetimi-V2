@@ -1,0 +1,729 @@
+/* ==================================================
+   KASA YÖNETİMİ V2
+   ================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    margin: 0;
+    width: 100%;
+    min-height: 100vh;
+    background: #f3f4f6;
+    color: #172033;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* ==================================================
+   ÜST BAŞLIK
+   ================================================== */
+
+header {
+    background: #111827;
+    color: white;
+    padding: 18px 14px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 23px;
+}
+
+header p {
+    margin: 5px 0 0;
+    color: #cbd5e1;
+    font-size: 12px;
+}
+
+
+/* ==================================================
+   ANA ALAN
+   ================================================== */
+
+main {
+    width: 100%;
+    max-width: 900px;
+    margin: auto;
+    padding: 10px;
+    padding-bottom: 120px;
+}
+
+
+/* ==================================================
+   KASA BİLGİLERİ
+   ================================================== */
+
+.bank-section {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+}
+
+.bank-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 14px 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.bank-card span {
+    display: block;
+    color: #667085;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.bank-card strong {
+    display: block;
+    margin-top: 5px;
+    font-size: 24px;
+}
+
+.bank-card.current {
+    border-left: 5px solid #2563eb;
+}
+
+.bank-card.current strong {
+    font-size: 29px;
+}
+
+.bank-card.current small {
+    display: block;
+    margin-top: 5px;
+    font-size: 11px;
+    font-weight: bold;
+    color: #475467;
+}
+
+.bank-value-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.edit-bank {
+    width: 35px;
+    height: 35px;
+    flex-shrink: 0;
+
+    border: 0;
+    border-radius: 9px;
+
+    background: #eff6ff;
+    color: #2563eb;
+
+    font-size: 16px;
+}
+
+
+/* ==================================================
+   ÖZET
+   ================================================== */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 7px;
+    margin-top: 8px;
+}
+
+.stat-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 11px 5px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.stat-card span {
+    display: block;
+    color: #667085;
+    font-size: 10px;
+}
+
+.stat-card b {
+    display: block;
+    margin-top: 4px;
+    font-size: 19px;
+}
+
+
+/* ==================================================
+   PANELLER
+   ================================================== */
+
+.panel {
+    width: 100%;
+    margin-top: 10px;
+    padding: 14px 10px;
+
+    background: #ffffff;
+    border-radius: 14px;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.panel h2 {
+    margin: 0 0 12px;
+    font-size: 17px;
+}
+
+
+/* ==================================================
+   RİSK / ORAN
+   ================================================== */
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+label {
+    color: #475467;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.form-grid input {
+    width: 100%;
+    margin-top: 5px;
+    padding: 12px;
+
+    border: 1px solid #d0d5dd;
+    border-radius: 9px;
+
+    background: white;
+    color: #172033;
+
+    font-size: 16px;
+    outline: none;
+}
+
+.form-grid input:focus {
+    border-color: #2563eb;
+}
+
+
+/* ==================================================
+   OYNANACAK TUTAR
+   ================================================== */
+
+.stake-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+
+    margin: 10px 0;
+    padding: 12px;
+
+    background: #f8fafc;
+
+    border: 1px dashed #cbd5e1;
+    border-radius: 10px;
+}
+
+.stake-box span {
+    color: #475467;
+    font-size: 12px;
+}
+
+.stake-box strong {
+    font-size: 16px;
+    white-space: nowrap;
+}
+
+
+/* ==================================================
+   SONUÇ
+   ================================================== */
+
+.result-title {
+    margin: 5px 0 6px;
+
+    color: #475467;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.result-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+}
+
+.result-button {
+    min-width: 0;
+    padding: 11px 2px;
+
+    border: 2px solid transparent;
+    border-radius: 9px;
+
+    background: #e5e7eb;
+    color: #344054;
+
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.result-button.win.active {
+    background: #dcfce7;
+    border-color: #22c55e;
+    color: #166534;
+}
+
+.result-button.fire.active {
+    background: #fee2e2;
+    border-color: #ef4444;
+    color: #991b1b;
+}
+
+.result-button.pending.active {
+    background: #fef3c7;
+    border-color: #f59e0b;
+    color: #92400e;
+}
+
+
+/* ==================================================
+   ÖNİZLEME
+   ================================================== */
+
+.preview {
+    margin: 9px 0;
+    padding: 10px;
+
+    background: #f8fafc;
+    border-radius: 9px;
+
+    color: #475467;
+
+    font-size: 11px;
+    line-height: 1.4;
+}
+
+
+/* ==================================================
+   KAYDET
+   ================================================== */
+
+.save-button {
+    width: 100%;
+
+    padding: 13px;
+
+    border: 0;
+    border-radius: 10px;
+
+    background: #2563eb;
+    color: white;
+
+    font-size: 14px;
+    font-weight: bold;
+}
+
+
+/* ==================================================
+   KAYITLAR BAŞLIK
+   ================================================== */
+
+.panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+}
+
+.panel-header h2 {
+    margin: 0;
+}
+
+.panel-header small {
+    display: block;
+    margin-top: 3px;
+    color: #98a2b3;
+    font-size: 8px;
+}
+
+.reset-button {
+    flex-shrink: 0;
+
+    padding: 7px 8px;
+
+    border: 1px solid #fda29b;
+    border-radius: 8px;
+
+    background: white;
+    color: #b42318;
+
+    font-size: 9px;
+    font-weight: bold;
+}
+
+
+/* ==================================================
+   TABLO
+   ================================================== */
+
+.table-wrapper {
+    width: 100%;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+table {
+    width: 100%;
+    min-width: 0;
+
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 6px 1px;
+
+    border-bottom: 1px solid #e5e7eb;
+
+    text-align: center;
+    vertical-align: middle;
+
+    overflow: hidden;
+
+    line-height: 1.1;
+}
+
+th {
+    background: #f9fafb;
+    color: #475467;
+
+    font-size: 6.5px;
+    font-weight: bold;
+}
+
+td {
+    color: #172033;
+    font-size: 7px;
+}
+
+
+/* ==================================================
+   SÜTUN GENİŞLİKLERİ
+   ================================================== */
+
+th:nth-child(1),
+td:nth-child(1) {
+    width: 5%;
+}
+
+th:nth-child(2),
+td:nth-child(2) {
+    width: 14%;
+}
+
+th:nth-child(3),
+td:nth-child(3) {
+    width: 10%;
+}
+
+th:nth-child(4),
+td:nth-child(4) {
+    width: 13%;
+}
+
+th:nth-child(5),
+td:nth-child(5) {
+    width: 10%;
+}
+
+th:nth-child(6),
+td:nth-child(6) {
+    width: 14%;
+}
+
+th:nth-child(7),
+td:nth-child(7) {
+    width: 12%;
+}
+
+th:nth-child(8),
+td:nth-child(8) {
+    width: 15%;
+}
+
+th:nth-child(9),
+td:nth-child(9) {
+    width: 7%;
+}
+
+
+/* ==================================================
+   SATIR RENKLERİ
+
+   KAZANDI  = YEŞİL
+   FİRE     = KIRMIZI
+   BEKLEMEDE = SARI
+   ================================================== */
+
+tr.row-win td {
+    background: #dcfce7;
+}
+
+tr.row-fire td {
+    background: #fee2e2;
+}
+
+tr.row-pending td {
+    background: #fef3c7;
+}
+
+
+/* ==================================================
+   TABLO INPUTLARI
+   ================================================== */
+
+.table-input {
+    display: block;
+
+    width: 100%;
+    min-width: 0;
+    height: 27px;
+
+    margin: 0;
+    padding: 1px;
+
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+
+    background: rgba(255, 255, 255, 0.8);
+    color: #172033;
+
+    text-align: center;
+
+    font-size: 7px;
+    font-weight: bold;
+
+    outline: none;
+}
+
+.table-input:focus {
+    border-color: #2563eb;
+    background: white;
+}
+
+
+/* ==================================================
+   TABLO SONUÇ BUTONU
+   ================================================== */
+
+.table-result {
+    width: 100%;
+    min-width: 0;
+
+    padding: 5px 0;
+
+    border: 0;
+    border-radius: 6px;
+
+    font-size: 5.8px;
+    font-weight: bold;
+
+    white-space: nowrap;
+}
+
+.table-result.win {
+    background: #16a34a;
+    color: white;
+}
+
+.table-result.fire {
+    background: #dc2626;
+    color: white;
+}
+
+.table-result.pending {
+    background: #f59e0b;
+    color: #ffffff;
+}
+
+
+/* ==================================================
+   KÂR / ZARAR
+   ================================================== */
+
+.pos {
+    color: #15803d;
+    font-weight: bold;
+}
+
+.neg {
+    color: #b91c1c;
+    font-weight: bold;
+}
+
+.neutral {
+    color: #92400e;
+    font-weight: bold;
+}
+
+
+/* ==================================================
+   SİL
+   ================================================== */
+
+.delete-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 22px;
+    height: 25px;
+
+    margin: auto;
+    padding: 0;
+
+    border: 0;
+    border-radius: 6px;
+
+    background: rgba(255, 255, 255, 0.75);
+
+    font-size: 11px;
+}
+
+
+/* ==================================================
+   BOŞ TABLO
+   ================================================== */
+
+.empty {
+    padding: 20px;
+
+    text-align: center;
+
+    color: #98a2b3;
+
+    font-size: 12px;
+}
+
+
+/* ==================================================
+   TELEFON
+   ================================================== */
+
+@media (max-width: 520px) {
+
+    header {
+        padding: 15px 12px;
+    }
+
+    header h1 {
+        font-size: 21px;
+    }
+
+    main {
+        padding: 8px 5px;
+        padding-bottom: 120px;
+    }
+
+    .bank-card {
+        padding: 12px 14px;
+    }
+
+    .bank-card strong {
+        font-size: 21px;
+    }
+
+    .bank-card.current strong {
+        font-size: 27px;
+    }
+
+    .panel {
+        padding: 12px 5px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .result-buttons {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    th {
+        padding: 6px 0;
+        font-size: 6px;
+    }
+
+    td {
+        padding: 6px 0;
+        font-size: 6.5px;
+    }
+
+    td:nth-child(2),
+    td:nth-child(4),
+    td:nth-child(7),
+    td:nth-child(8) {
+        font-size: 6px;
+    }
+
+    .table-input {
+        height: 26px;
+        padding: 1px 0;
+        font-size: 6.5px;
+    }
+
+    .table-result {
+        padding: 5px 0;
+        font-size: 5.2px;
+    }
+
+    .delete-row {
+        width: 20px;
+        height: 24px;
+        font-size: 10px;
+    }
+}
+
+
+/* ==================================================
+   ÇOK KÜÇÜK TELEFON
+   ================================================== */
+
+@media (max-width: 380px) {
+
+    main {
+        padding-left: 3px;
+        padding-right: 3px;
+    }
+
+    .panel {
+        padding-left: 3px;
+        padding-right: 3px;
+    }
+
+    th {
+        font-size: 5.6px;
+    }
+
+    td {
+        font-size: 6px;
+    }
+
+    .table-input {
+        font-size: 6px;
+    }
+
+    .table-result {
+        font-size: 4.8px;
+    }
+}
